@@ -1,0 +1,54 @@
+<%- include("partials/header") %>
+
+
+
+<div class="container" id="top">
+
+  <div style="margin-top: 50px;" class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <h2 style="text-align: center; margin-top: 20px; color: green">Search For a Case</h2>
+      <div style="width: 30%; margin: 25px auto;">
+        <form class="" action="/laws" method="GET">
+          <div class="form-group">
+            <input style="text-align: center; color: green" type="text" placeholder="Search for case law" name="search">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-sm btn-success btn-block">Submit!</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <style type="text/css" media="screen">
+    a { font-size: 15px; color: #26a11b; text-decoration: underline;  }
+a:link { color: #26a11b; text-decoration: underline; }
+a:hover { color:#398732; text-decoration: none; }
+
+</style>
+
+  <h2 style="text-align: center; margin-top: 50px; color: #26a11b">Search Results</h2>
+
+
+  <% data["results"].forEach(function(law){ %>
+  <h5>
+    <a href="<%= law["frontend_url"] %>"><%= law["name_abbreviation"]%></a>
+    :
+    (<%= law["decision_date"]%>) / 
+    <%= law["court"]["name_abbreviation"]%> /
+    <%= law["citations"][0]["cite"] %>
+
+
+
+
+
+  </h5>
+  <% }); %>
+
+
+  <a href="#">Search again!</a>
+</div>
+
+<%- include("partials/footer") %>
